@@ -25,7 +25,7 @@ const LoginScreen = () => {
               style={styles.image}
             />
           </View>
-          <View style={[{paddingBottom: 12}]}>
+          <View style={{paddingBottom: 12}}>
             <View style={styles.header}>
               <Text style={styles.title}>Login or Create an Account</Text>
               <Text style={styles.subtitle}>
@@ -72,10 +72,10 @@ const LoginScreen = () => {
               </TouchableOpacity>
             </View>
             <Text style={styles.footer}>
-              <Text style={{color: '#828282'}}>
+              <Text style={styles.footerText}>
                 By clicking continue, you agree to our{' '}
               </Text>
-              Terms of Service <Text style={{color: '#828282'}}>and</Text>{' '}
+              Terms of Service <Text style={styles.footerText}>and</Text>{' '}
               Privacy Policy
             </Text>
           </View>
