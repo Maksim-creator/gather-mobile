@@ -1,0 +1,18 @@
+{
+  "LoginScreen": {
+    "title": "Login or Create an Account",
+    "subtitle": "Enter your credentials to enter the world of fun!",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "login_button": "Login",
+    "or_text": "or",
+    "create_button": "Create an Account",
+    "footer_text_1": "By clicking continue, you agree to our",
+    "footer_text_2": "and",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy",
+    "email_validation_error": "Email is required!",
+    "password_validation_error": "Password is required!",
+    "password_length_error": "Password should be more then 8 symbols"
+  }
+}
