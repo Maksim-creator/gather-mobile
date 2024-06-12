@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {darkGrey, lightGrey} from '../../assets/colors.ts';
+import {black, darkGrey, lightGrey} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   safeArea: {
@@ -9,12 +9,12 @@ export default StyleSheet.create({
     height: '100%',
   },
   container: {
-    height: '100%',
     justifyContent: 'space-between',
     paddingHorizontal: 14,
+    flex: 1,
   },
   imageContainer: {
-    height: '40%',
+    flex: 0.7,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -39,28 +39,21 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: black,
   },
   subtitle: {
     fontSize: 14,
     fontWeight: 'normal',
     textAlign: 'center',
+    color: black,
   },
-  input: {
-    height: 40,
-    width: '100%',
-    borderColor: lightGrey,
-    borderWidth: 1,
-    paddingHorizontal: 8,
-    borderRadius: 8,
-  },
-
   button: {
     backgroundColor: 'black',
-    padding: 12,
-    borderRadius: 8,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 8,
     width: '100%',
-    height: 40,
+    height: 44,
   },
   buttonText: {
     color: 'white',
@@ -81,13 +74,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 40,
+    height: 44,
   },
   footer: {
-    textAlign: 'center',
-    paddingTop: 16,
+    // textAlign: 'center',
+    color: 'black',
   },
-  footerText: {
+  footerHighlightedText: {
+    paddingTop: 16,
+    paddingHorizontal: 14,
+    textAlign: 'center',
     color: darkGrey,
   },
 });
