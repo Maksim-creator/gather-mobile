@@ -5,21 +5,22 @@ import styles from './styles.ts';
 interface Props extends TextInputProps {
   label?: string;
   error?: string;
+  touched?: boolean;
 }
 
-const Input: React.FC<Props> = ({label, error, ...props}) => {
+const Input: React.FC<Props> = ({label, error, touched, ...props}) => {
   return (
     <View>
       {label ? <Text style={styles.label}>{label}</Text> : null}
       <TextInput
         {...props}
         style={
-          error
+          error && touched
             ? [styles.input, props.style, styles.errorInput]
             : [styles.input, props.style]
         }
       />
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      {error && touched ? <Text style={styles.error}>{error}</Text> : null}
     </View>
   );
 };

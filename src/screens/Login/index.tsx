@@ -59,7 +59,14 @@ const LoginScreen = () => {
               initialValues={{email: '', password: ''}}
               onSubmit={handleFormSubmit}
               validationSchema={loginFormSchema}>
-              {({values, handleSubmit, handleBlur, handleChange, errors}) => (
+              {({
+                values,
+                handleSubmit,
+                handleBlur,
+                handleChange,
+                errors,
+                touched,
+              }) => (
                 <View>
                   <View style={styles.header}>
                     <Text style={styles.title}>{t('title')}</Text>
@@ -74,6 +81,7 @@ const LoginScreen = () => {
                       keyboardType="email-address"
                       autoCapitalize="none"
                       error={errors.email}
+                      touched={touched.email}
                     />
                     <Input
                       placeholder={t('password_placeholder')}
@@ -82,6 +90,7 @@ const LoginScreen = () => {
                       onBlur={handleBlur('password')}
                       secureTextEntry
                       error={errors.password}
+                      touched={touched.password}
                     />
                   </View>
                   <View style={styles.buttonsContainer}>
