@@ -3,7 +3,6 @@ import {initReactI18next} from 'react-i18next';
 
 export enum Locales {
   en = 'en',
-  es = 'es',
 }
 
 export const DEFAULT_LANGUAGE = Locales.en;
