@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   Text,
   Image,
-  TouchableOpacity,
   View,
   KeyboardAvoidingView,
   Platform,
@@ -13,17 +12,21 @@ import {
   Easing,
 } from 'react-native';
 import styles from './styles.ts';
-import Divider from '../../components/Divider';
 import i18n from '../../i18n';
 import {Formik} from 'formik';
 import {loginFormSchema} from './utils.ts';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
+import {loginThunk} from '../../redux/auth/thunk.ts';
+import {LoginPayload} from '../../redux/auth/entities.ts';
+import {Button, Divider, Input} from '../../components';
 
 const t = i18n.withScope('LoginScreen');
 
 const LoginScreen = () => {
+  const dispatch = useAppDispatch();
+  const {loginLoading} = useAppSelector(state => state.auth);
+
   const animatedOpacity = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
 
@@ -36,8 +39,9 @@ const LoginScreen = () => {
     }).start();
   }, [animatedOpacity]);
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (values: LoginPayload) => {
     Keyboard.dismiss();
+    dispatch(loginThunk(values));
   };
 
   return (
@@ -94,7 +98,11 @@ const LoginScreen = () => {
                     />
                   </View>
                   <View style={styles.buttonsContainer}>
-                    <Button text={t('login_button')} onPress={handleSubmit} />
+                    <Button
+                      text={t('login_button')}
+                      onPress={handleSubmit}
+                      loading={loginLoading}
+                    />
                     <View style={styles.orTextContainer}>
                       <Divider width="45%" />
                       <Text style={styles.orText}>{t('or_text')}</Text>

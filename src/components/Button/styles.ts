@@ -17,6 +17,8 @@ export default StyleSheet.create({
     width: '100%',
     height: 44,
     borderRadius: 8,
+    flexDirection: 'row',
+    gap: 10,
   },
   text: {
     fontFamily: 'Inter-Medium',
