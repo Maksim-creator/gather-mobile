@@ -1,0 +1,18 @@
+{
+  "LoginScreen": {
+    "title": "Увійдіть або створіть обліковий запис",
+    "subtitle": "Введіть свої облікові дані, щоб потрапити у світ розваг!",
+    "email_placeholder": "Електронна пошта",
+    "password_placeholder": "Пароль",
+    "login_button": "Логін",
+    "or_text": "або",
+    "create_button": "Створити аккаунт",
+    "footer_text_1": "Натискаючи «Продовжити», ви погоджуєтеся з нашими",
+    "footer_text_2": "та",
+    "terms_of_service": "Умовами використання",
+    "privacy_policy": "Політикою конфіденційності",
+    "email_validation_error": "Електронна пошта обов'язкова",
+    "password_validation_error": "Пароль потрібен",
+    "password_length_error": "Пароль має бути більше 8 символів"
+  }
+}

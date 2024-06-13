@@ -14,7 +14,10 @@ const Button: React.FC<Props> = ({text, kind = 'primary', onPress}) => {
     [kind],
   );
 
-  const textStyle = useMemo(() => [styles[`text_kind_${kind}`]], [kind]);
+  const textStyle = useMemo(
+    () => [styles.text, styles[`text_kind_${kind}`]],
+    [kind],
+  );
 
   return (
     <TouchableOpacity style={style} onPress={onPress}>

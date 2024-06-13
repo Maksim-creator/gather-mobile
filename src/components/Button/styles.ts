@@ -18,6 +18,9 @@ export default StyleSheet.create({
     height: 44,
     borderRadius: 8,
   },
+  text: {
+    fontFamily: 'Inter-Medium',
+  },
   text_kind_primary: {
     color: white,
   },
