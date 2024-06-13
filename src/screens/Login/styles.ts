@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {black, darkGrey, lightGrey} from '../../assets/colors.ts';
+import {black, darkGrey} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   safeArea: {
@@ -19,7 +19,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    gap: 5,
+    gap: 10,
   },
   inputsContainer: {
     paddingVertical: 17,
@@ -40,12 +40,14 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: black,
+    fontFamily: 'Inter-Bold',
   },
   subtitle: {
     fontSize: 14,
     fontWeight: 'normal',
     textAlign: 'center',
     color: black,
+    fontFamily: 'Inter-Regular',
   },
   button: {
     backgroundColor: 'black',
@@ -65,7 +67,9 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   orText: {
-    alignSelf: 'center',
+    fontSize: 12,
+    fontFamily: 'Inter-Medium',
+    color: '#787878',
   },
   createButton: {
     borderColor: 'black',
@@ -77,10 +81,12 @@ export default StyleSheet.create({
     height: 44,
   },
   footer: {
-    // textAlign: 'center',
-    color: 'black',
+    color: black,
+    fontFamily: 'Inter-Regular',
   },
   footerHighlightedText: {
+    fontFamily: 'Inter-Regular',
+    lineHeight: 20,
     paddingTop: 16,
     paddingHorizontal: 14,
     textAlign: 'center',

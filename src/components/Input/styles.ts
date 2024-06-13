@@ -9,6 +9,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 8,
     borderRadius: 8,
+    fontFamily: 'Inter-Regular',
   },
   label: {fontWeight: '700', fontSize: 10, paddingBottom: 4},
   error: {color: error, paddingTop: 4},

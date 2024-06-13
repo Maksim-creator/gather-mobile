@@ -11,8 +11,8 @@
     "footer_text_2": "and",
     "terms_of_service": "Terms of Service",
     "privacy_policy": "Privacy Policy",
-    "email_validation_error": "Email is required!",
-    "password_validation_error": "Password is required!",
-    "password_length_error": "Password should be more then 8 symbols"
+    "email_validation_error": "Email is required",
+    "password_validation_error": "Password is required",
+    "password_length_error": "Password should be more than 8 symbols"
   }
 }

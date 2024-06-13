@@ -3,6 +3,7 @@ import {initReactI18next} from 'react-i18next';
 
 export enum Locales {
   en = 'en',
+  ua = 'ua',
 }
 
 export const DEFAULT_LANGUAGE = Locales.en;
@@ -12,6 +13,9 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: require('./translations/en.json'),
+    },
+    ua: {
+      translation: require('./translations/ua.json'),
     },
   },
   lng: DEFAULT_LANGUAGE,
