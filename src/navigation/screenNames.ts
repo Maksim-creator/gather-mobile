@@ -1,3 +1,5 @@
-export const screenNames = {
-  login: 'Login',
+enum screenNames {
+  LOGIN = 'Login',
 }
+
+export default screenNames;

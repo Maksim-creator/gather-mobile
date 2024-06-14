@@ -1,14 +1,24 @@
-import React, {useMemo} from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import React, {useCallback, useMemo} from 'react';
+import {LayoutChangeEvent, Text, TouchableOpacity} from 'react-native';
 import styles from './styles.ts';
+import ActivityIndicator from '../ActivityIndicator';
 
 interface Props {
   kind?: 'primary' | 'outline';
   text: string;
   onPress?: () => void;
+  loading?: boolean;
 }
 
-const Button: React.FC<Props> = ({text, kind = 'primary', onPress}) => {
+const Button: React.FC<Props> = ({
+  text,
+  kind = 'primary',
+  onPress,
+  loading,
+}) => {
+  const [textWidth, setTextWidth] = React.useState(0);
+  const [buttonWidth, setButtonWidth] = React.useState(0);
+
   const style = useMemo(
     () => [styles.container, styles[`button_kind_${kind}`]],
     [kind],
@@ -19,9 +29,21 @@ const Button: React.FC<Props> = ({text, kind = 'primary', onPress}) => {
     [kind],
   );
 
+  const onButtonLayout = useCallback(
+    (e: LayoutChangeEvent) => setButtonWidth(e.nativeEvent.layout.width / 2),
+    [],
+  );
+  const onTextLayout = useCallback(
+    (e: LayoutChangeEvent) => setTextWidth(e.nativeEvent.layout.width / 2),
+    [],
+  );
+
   return (
-    <TouchableOpacity style={style} onPress={onPress}>
-      <Text style={textStyle}>{text}</Text>
+    <TouchableOpacity style={style} onPress={onPress} onLayout={onButtonLayout}>
+      <Text style={textStyle} onLayout={onTextLayout}>
+        {text}
+      </Text>
+      {loading && <ActivityIndicator right={buttonWidth - textWidth - 30} />}
     </TouchableOpacity>
   );
 };

@@ -1,12 +1,14 @@
+import 'react-native-devsettings';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import AuthStack from './src/navigation/AuthStack.tsx';
+import Navigation from './src/navigation';
+import {Provider} from 'react-redux';
+import {store} from './src/redux/store.ts';
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 }
 
