@@ -20,11 +20,17 @@ import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {loginThunk} from '../../redux/auth/thunk.ts';
 import {LoginPayload} from '../../redux/auth/entities.ts';
 import {Button, Divider, Input} from '../../components';
+import {useNavigation} from '@react-navigation/native';
+import screenNames from '../../navigation/screenNames.ts';
+import {RootStackParamList} from '../../navigation/enitites.ts';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const t = i18n.withScope('LoginScreen');
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const {loginLoading} = useAppSelector(state => state.auth);
 
   const animatedOpacity = useRef(new Animated.Value(0)).current;
@@ -41,7 +47,8 @@ const LoginScreen = () => {
 
   const handleFormSubmit = (values: LoginPayload) => {
     Keyboard.dismiss();
-    dispatch(loginThunk(values));
+    navigation.push(screenNames.CODE_VERIFICATION, {email: values.email});
+    // dispatch(loginThunk(values));
   };
 
   return (

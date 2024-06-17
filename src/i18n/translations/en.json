@@ -14,5 +14,8 @@
     "email_validation_error": "Email is required",
     "password_validation_error": "Password is required",
     "password_length_error": "Password should be more than 8 symbols"
+  },
+  "CodeVerificationScreen": {
+    "title": "We sent 4-digit code to [[{{email}}]]. Please, go to your email and enter this code below to verify your email."
   }
 }
