@@ -20,10 +20,10 @@ import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {loginThunk} from '../../redux/auth/thunk.ts';
 import {LoginPayload} from '../../redux/auth/entities.ts';
 import {Button, Divider, Input} from '../../components';
-import screenNames from '../../navigation/screenNames.ts';
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import screenNames from '../../navigation/screenNames.ts';
 import {RootStackParamList} from '../../navigation/enitites.ts';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const t = i18n.withScope('LoginScreen');
 
@@ -36,6 +36,15 @@ const LoginScreen = () => {
   const animatedOpacity = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
 
+  const handleFormSubmit = (values: LoginPayload) => {
+    Keyboard.dismiss();
+    dispatch(loginThunk(values));
+  };
+
+  const navigateToSignUp = () => {
+    navigation.push(screenNames.SIGN_UP);
+  };
+
   useEffect(() => {
     Animated.timing(animatedOpacity, {
       toValue: 1,
@@ -44,11 +53,6 @@ const LoginScreen = () => {
       duration: 1000,
     }).start();
   }, [animatedOpacity]);
-
-  const handleFormSubmit = (values: LoginPayload) => {
-    Keyboard.dismiss();
-    dispatch(loginThunk(values));
-  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -115,7 +119,7 @@ const LoginScreen = () => {
                       <Divider width="45%" />
                     </View>
                     <Button
-                      onPress={() => navigation.push(screenNames.SIGN_UP)}
+                      onPress={navigateToSignUp}
                       kind="outline"
                       text={t('create_button')}
                     />

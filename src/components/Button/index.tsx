@@ -1,5 +1,12 @@
 import React, {useCallback, useMemo} from 'react';
-import {LayoutChangeEvent, Text, TouchableOpacity} from 'react-native';
+import {
+  LayoutChangeEvent,
+  StyleProp,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import styles from './styles.ts';
 import ActivityIndicator from '../ActivityIndicator';
 
@@ -8,6 +15,8 @@ interface Props {
   text: string;
   onPress?: () => void;
   loading?: boolean;
+  style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -15,18 +24,28 @@ const Button: React.FC<Props> = ({
   kind = 'primary',
   onPress,
   loading,
+  style,
+  disabled = false,
 }) => {
   const [textWidth, setTextWidth] = React.useState(0);
   const [buttonWidth, setButtonWidth] = React.useState(0);
 
-  const style = useMemo(
-    () => [styles.container, styles[`button_kind_${kind}`]],
-    [kind],
+  const containerStyle = useMemo(
+    () => [
+      styles.container,
+      styles[`button_kind_${kind}`],
+      disabled ? styles[`button_kind_${kind}_disabled`] : {},
+    ],
+    [kind, disabled],
   );
 
   const textStyle = useMemo(
-    () => [styles.text, styles[`text_kind_${kind}`]],
-    [kind],
+    () => [
+      styles.text,
+      styles[`text_kind_${kind}`],
+      disabled ? styles[`text_kind_${kind}_disabled`] : {},
+    ],
+    [kind, disabled],
   );
 
   const onButtonLayout = useCallback(
@@ -39,12 +58,18 @@ const Button: React.FC<Props> = ({
   );
 
   return (
-    <TouchableOpacity style={style} onPress={onPress} onLayout={onButtonLayout}>
-      <Text style={textStyle} onLayout={onTextLayout}>
-        {text}
-      </Text>
-      {loading && <ActivityIndicator right={buttonWidth - textWidth - 30} />}
-    </TouchableOpacity>
+    <View style={style}>
+      <TouchableOpacity
+        style={containerStyle}
+        onPress={onPress}
+        onLayout={onButtonLayout}
+        disabled={disabled}>
+        <Text style={textStyle} onLayout={onTextLayout}>
+          {text}
+        </Text>
+        {loading && <ActivityIndicator right={buttonWidth - textWidth - 30} />}
+      </TouchableOpacity>
+    </View>
   );
 };
 

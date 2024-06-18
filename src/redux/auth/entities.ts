@@ -16,6 +16,10 @@ export interface LoginResponse {
   user: User;
 }
 
+export interface VerifyCodePayload {
+  code: string;
+}
+
 export interface SignupPayload {
   email: string;
   password: string;

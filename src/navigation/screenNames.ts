@@ -1,5 +1,7 @@
 enum screenNames {
-    LOGIN = 'Login',
-    SIGN_UP='Sign Up'
+  LOGIN = 'Login',
+  CODE_VERIFICATION = 'Code Verification',
+  SIGN_UP='Sign Up'
 }
+
 export default screenNames;
