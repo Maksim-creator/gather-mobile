@@ -14,5 +14,25 @@
     "email_validation_error": "Email is required",
     "password_validation_error": "Password is required",
     "password_length_error": "Password should be more than 8 symbols"
+  },
+  "SignUpScreen": {
+    "title": "Create an account",
+    "subtitle": "Enter your email to sign up for this app",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password",
+    "name_placeholder": "Name",
+    "surname_placeholder": "Surname",
+    "confirm_password_placeholder": "Confirm Password",
+    "footer_text_1": "By clicking continue, you agree to our",
+    "footer_text_2": "and",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy",
+    "email_validation_error": "Email is required",
+    "password_validation_error": "Password is required",
+    "password_length_error": "Password should be more than 8 symbols",
+    "name_validation_error": "Name is required",
+    "surname_validation_error": "Surname is required",
+    "sign_up_button": "Sign Up",
+    "email_format_error": "Should be email format"
   }
 }

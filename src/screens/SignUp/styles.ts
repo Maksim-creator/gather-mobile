@@ -1,5 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
-import {darkGrey, lightGrey} from '../../assets/colors.ts';
+import {black, darkGrey, lightGrey} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   safeArea: {
@@ -11,12 +11,16 @@ export default StyleSheet.create({
   container: {
     height: '100%',
     justifyContent: 'space-between',
-    paddingHorizontal: 14,
   },
   imageContainer: {
     height: '40%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  content: {
+    paddingHorizontal: 14,
+    flex: 1,
+    justifyContent: 'space-between',
   },
   header: {
     gap: 5,
@@ -28,7 +32,7 @@ export default StyleSheet.create({
   inputsInfoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 16,
+    gap: 8,
   },
   buttonsContainer: {
     gap: 8,
@@ -44,11 +48,13 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: black,
   },
   subtitle: {
     fontSize: 14,
     fontWeight: 'normal',
     textAlign: 'center',
+    color: black,
   },
   input: {
     height: 40,
@@ -59,12 +65,8 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
   inputSmall: {
-    width: Dimensions.get('window').width / 2 - 18,
-
-    borderColor: lightGrey,
-    borderWidth: 1,
-    paddingHorizontal: 8,
-    borderRadius: 8,
+    width: Dimensions.get('window').width / 2 - 14 - 4,
+    height: 44,
   },
 
   button: {
@@ -97,10 +99,22 @@ export default StyleSheet.create({
     height: 40,
   },
   footer: {
-    textAlign: 'center',
+    color: black,
+    fontFamily: 'Inter-Regular',
+  },
+  footerHighlightedText: {
+    fontFamily: 'Inter-Regular',
+    lineHeight: 20,
     paddingTop: 16,
+    paddingHorizontal: 14,
+    textAlign: 'center',
+    color: darkGrey,
   },
   footerText: {
     color: darkGrey,
+  },
+  keyboardAvoidingView: {
+    height: '100%',
+    justifyContent: 'space-between',
   },
 });

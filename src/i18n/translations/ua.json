@@ -14,5 +14,25 @@
     "email_validation_error": "Електронна пошта обов'язкова",
     "password_validation_error": "Пароль потрібен",
     "password_length_error": "Пароль має бути більше 8 символів"
+  },
+  "SignUpScreen": {
+    "title": "Створити обліковий запис",
+    "subtitle": "Введіть свою електронну адресу, щоб зареєструватися в цьому додатку",
+    "email_placeholder": "Електронна адреса",
+    "password_placeholder": "Пароль",
+    "name_placeholder": "Ім'я",
+    "surname_placeholder": "Прізвище",
+    "confirm_password_placeholder": "Підтвердьте пароль",
+    "footer_text_1": "Натискаючи продовжити, ви погоджуєтеся з нашими",
+    "footer_text_2": "та",
+    "terms_of_service": "Умовами надання послуг",
+    "privacy_policy": "Політикою конфіденційності",
+    "email_validation_error": "Електронна адреса обов'язкова",
+    "password_validation_error": "Пароль обов'язковий",
+    "password_length_error": "Пароль повинен бути більше 8 символів",
+    "name_validation_error": "Ім'я обов'язкове",
+    "surname_validation_error": "Прізвище обов'язкове",
+    "sign_up_button": "Зареєструватися",
+    "email_format_error": "Пошта повинаа бути за форматом"
   }
 }

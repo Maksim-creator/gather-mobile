@@ -2,15 +2,21 @@ import * as Yup from 'yup';
 import i18n from '../../i18n';
 
 export const singUpFormSchema = Yup.object({
-  name: Yup.string().min(2).max(20).required('Name is required'),
-  surname: Yup.string().min(2).max(20).required('Surname is required'),
+  firstName: Yup.string()
+    .min(2)
+    .max(20)
+    .required(i18n.t('SignUpScreen.name_validation_error')),
+  lastName: Yup.string()
+    .min(2)
+    .max(20)
+    .required(i18n.t('SignUpScreen.surname_validation_error')),
   email: Yup.string()
-    .email()
-    .required(i18n.t('LoginScreen.email_validation_error')),
+    .email(i18n.t('SignUpScreen.email_format_error'))
+    .required(i18n.t('SignUpScreen.email_validation_error')),
   password: Yup.string()
-    .min(6, 'Password must be at least 6 characters')
-    .required('Password is required'),
-  confirmPassword: Yup.string()
+    .min(8, i18n.t('SignUpScreen.password_length_error'))
+    .required(i18n.t('SignUpScreen.password_validation_error')),
+  repeatPassword: Yup.string()
     .oneOf([Yup.ref('password'), undefined], 'Passwords must match')
     .required('Confirm Password is required'),
 });
