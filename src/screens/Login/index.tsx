@@ -20,11 +20,17 @@ import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {loginThunk} from '../../redux/auth/thunk.ts';
 import {LoginPayload} from '../../redux/auth/entities.ts';
 import {Button, Divider, Input} from '../../components';
+import screenNames from '../../navigation/screenNames.ts';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../navigation/enitites.ts';
 
 const t = i18n.withScope('LoginScreen');
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const {loginLoading} = useAppSelector(state => state.auth);
 
   const animatedOpacity = useRef(new Animated.Value(0)).current;
@@ -108,7 +114,11 @@ const LoginScreen = () => {
                       <Text style={styles.orText}>{t('or_text')}</Text>
                       <Divider width="45%" />
                     </View>
-                    <Button kind="outline" text={t('create_button')} />
+                    <Button
+                      onPress={() => navigation.push(screenNames.SIGN_UP)}
+                      kind="outline"
+                      text={t('create_button')}
+                    />
                   </View>
                 </View>
               )}

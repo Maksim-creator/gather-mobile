@@ -12,6 +12,11 @@ export default StyleSheet.create({
     fontFamily: 'Inter-Regular',
   },
   label: {fontWeight: '700', fontSize: 10, paddingBottom: 4},
-  error: {color: error, paddingTop: 4},
+  error: {
+    color: error,
+    paddingTop: 4,
+    fontFamily: 'Inter-Regular',
+    fontSize: 11,
+  },
   errorInput: {borderColor: error, borderWidth: 1.5},
 });
