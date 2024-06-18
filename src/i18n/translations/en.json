@@ -16,6 +16,10 @@
     "password_length_error": "Password should be more than 8 symbols"
   },
   "CodeVerificationScreen": {
-    "title": "We sent 4-digit code to [[{{email}}]]. Please, go to your email and enter this code below to verify your email."
+    "title": "We sent 4-digit code to [[{{email}}]]. Please, go to your email and enter this code below to verify your email.",
+    "send_again_title": "Didn't get a security code?",
+    "open_mail_button": "Open Gmail",
+    "send_again_button": "Send again!",
+    "verify_button": "Verify"
   }
 }

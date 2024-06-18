@@ -14,5 +14,12 @@
     "email_validation_error": "Електронна пошта обов'язкова",
     "password_validation_error": "Пароль потрібен",
     "password_length_error": "Пароль має бути більше 8 символів"
+  },
+  "CodeVerificationScreen": {
+    "title": "Ми надіслали 4-значний код на адресу [[{{email}}]]. Перейдіть до своєї електронної пошти та введіть цей код нижче, щоб підтвердити свою електронну адресу.",
+    "send_again_title": "Не отримали код безпеки?",
+    "open_mail_button": "Відкрити Gmail",
+    "send_again_button": "Відправити знову!",
+    "verify_button": "Підтвердити"
   }
 }

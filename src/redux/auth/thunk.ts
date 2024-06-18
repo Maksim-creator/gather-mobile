@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import api from '../../api/auth';
-import {LoginPayload, LoginResponse} from './entities.ts';
+import {LoginPayload, LoginResponse, VerifyCodePayload} from './entities.ts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {setAuthorizationToken} from '../../api';
 
@@ -29,6 +29,29 @@ export const signupThunk = createAsyncThunk(
     try {
       const response = await api.signup(payload);
       return response.data;
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const sendVerificationCode = createAsyncThunk(
+  'auth/sendVerificationCode',
+  async (_, {rejectWithValue}) => {
+    try {
+      await api.sendVerificationCode();
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  },
+);
+
+export const verifyCode = createAsyncThunk<boolean, VerifyCodePayload>(
+  'auth/verifyCode',
+  async ({code}, {rejectWithValue}) => {
+    try {
+      const response = await api.verifyCode(code);
+      return response.data.verified;
     } catch (e) {
       return rejectWithValue(e);
     }

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {black, white} from '../../assets/colors.ts';
+import {black, disabled, lightGrey, white} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   button_kind_primary: {
@@ -10,6 +10,13 @@ export default StyleSheet.create({
     borderColor: black,
     borderWidth: 1,
     color: '#000',
+  },
+  button_kind_primary_disabled: {
+    backgroundColor: disabled,
+  },
+  button_kind_outline_disabled: {
+    backgroundColor: disabled,
+    borderWidth: 0,
   },
   container: {
     alignItems: 'center',
@@ -28,5 +35,11 @@ export default StyleSheet.create({
   },
   text_kind_outline: {
     color: black,
+  },
+  text_kind_primary_disabled: {
+    color: lightGrey,
+  },
+  text_kind_outline_disabled: {
+    color: lightGrey,
   },
 });

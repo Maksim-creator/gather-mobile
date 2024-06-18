@@ -4,3 +4,4 @@ export const error = '#fa5c5c';
 export const black = '#000000';
 export const white = '#ffffff';
 export const linkBlue = '#35AAFF';
+export const disabled = '#838383';

@@ -16,6 +16,7 @@ interface Props {
   onPress?: () => void;
   loading?: boolean;
   style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -24,18 +25,27 @@ const Button: React.FC<Props> = ({
   onPress,
   loading,
   style,
+  disabled = false,
 }) => {
   const [textWidth, setTextWidth] = React.useState(0);
   const [buttonWidth, setButtonWidth] = React.useState(0);
 
   const containerStyle = useMemo(
-    () => [styles.container, styles[`button_kind_${kind}`]],
-    [kind],
+    () => [
+      styles.container,
+      styles[`button_kind_${kind}`],
+      disabled ? styles[`button_kind_${kind}_disabled`] : {},
+    ],
+    [kind, disabled],
   );
 
   const textStyle = useMemo(
-    () => [styles.text, styles[`text_kind_${kind}`]],
-    [kind],
+    () => [
+      styles.text,
+      styles[`text_kind_${kind}`],
+      disabled ? styles[`text_kind_${kind}_disabled`] : {},
+    ],
+    [kind, disabled],
   );
 
   const onButtonLayout = useCallback(
@@ -52,7 +62,8 @@ const Button: React.FC<Props> = ({
       <TouchableOpacity
         style={containerStyle}
         onPress={onPress}
-        onLayout={onButtonLayout}>
+        onLayout={onButtonLayout}
+        disabled={disabled}>
         <Text style={textStyle} onLayout={onTextLayout}>
           {text}
         </Text>
