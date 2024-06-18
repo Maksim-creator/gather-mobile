@@ -24,6 +24,7 @@
 		E7B1E0338315449AA596E265 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A02D9636EB94B15AA1129B8 /* Inter-Light.ttf */; };
 		EBE811B539D244C2BDFA1636 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CADA2987B064D4AB4C9ADAF /* Inter-Bold.ttf */; };
 		FF7E2E02A86E43AABEFD6280 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4790D818EBD34A6080BC914E /* Inter-Thin.ttf */; };
+		9104729B4E554733866D7CC0 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145F0DF0D67C42C69069AC55 /* BootSplash.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		BB70429B160E42758A12758B /* Inter-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Black.ttf"; path = "../src/assets/fonts/Inter-Black.ttf"; sourceTree = "<group>"; };
 		BCCC7760566FA02B0E187F1C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Gather/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		145F0DF0D67C42C69069AC55 /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "gather/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
 				2B9C855E803F46A484D22A92 /* Resources */,
+				145F0DF0D67C42C69069AC55 /* BootSplash.storyboard */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				C082DDDA4A264C9F9C0C8834 /* Inter-Regular.ttf in Resources */,
 				B9E0B3B664854314AE46E320 /* Inter-SemiBold.ttf in Resources */,
 				FF7E2E02A86E43AABEFD6280 /* Inter-Thin.ttf in Resources */,
+				9104729B4E554733866D7CC0 /* BootSplash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
