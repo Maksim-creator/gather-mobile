@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {User} from './entities.ts';
-import {loginThunk, sendVerificationCode, verifyCode} from './thunk.ts';
+import {loginThunk, signupThunk, sendVerificationCode, verifyCode} from './thunk.ts';
 
 export interface AuthState {
   user?: User;
@@ -8,6 +8,8 @@ export interface AuthState {
   loginError?: string;
   verificationCodeSending?: boolean;
   codeVerifying?: boolean;
+  signUpError?: string;
+  signUpLoading?: boolean;
 }
 
 const initialState: AuthState = {};
@@ -48,6 +50,17 @@ const authSlice = createSlice({
     });
     builder.addCase(verifyCode.rejected, state => {
       state.codeVerifying = false;
+    });
+    builder.addCase(signupThunk.pending, state => {
+      state.signUpLoading = true;
+    });
+    builder.addCase(signupThunk.fulfilled, (state, action) => {
+      state.signUpLoading = false;
+      state.user = action.payload.user;
+    });
+    builder.addCase(signupThunk.rejected, (state, action) => {
+      state.signUpLoading = false;
+      state.signUpError = action.error.message;
     });
   },
 });

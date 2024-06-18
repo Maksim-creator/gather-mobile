@@ -47,8 +47,7 @@ const LoginScreen = () => {
 
   const handleFormSubmit = (values: LoginPayload) => {
     Keyboard.dismiss();
-    navigation.push(screenNames.CODE_VERIFICATION, {email: values.email});
-    // dispatch(loginThunk(values));
+    dispatch(loginThunk(values));
   };
 
   return (
@@ -115,7 +114,11 @@ const LoginScreen = () => {
                       <Text style={styles.orText}>{t('or_text')}</Text>
                       <Divider width="45%" />
                     </View>
-                    <Button kind="outline" text={t('create_button')} />
+                    <Button
+                      onPress={() => navigation.push(screenNames.SIGN_UP)}
+                      kind="outline"
+                      text={t('create_button')}
+                    />
                   </View>
                 </View>
               )}

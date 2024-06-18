@@ -1,10 +1,8 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import api from '../../api/auth';
-import {LoginPayload, LoginResponse, VerifyCodePayload} from './entities.ts';
+import {LoginPayload, LoginResponse, SignupPayload, VerifyCodePayload} from './entities.ts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {setAuthorizationToken} from '../../api';
-
-import {navigate} from '../../navigation';
 
 export const loginThunk = createAsyncThunk<LoginResponse, LoginPayload>(
   'auth/login',
@@ -14,7 +12,7 @@ export const loginThunk = createAsyncThunk<LoginResponse, LoginPayload>(
 
       await AsyncStorage.setItem('accessToken', response.data.accessToken);
       setAuthorizationToken(response.data.accessToken);
-      // navigate(screenNames.LOGIN);
+      /// navigate to main screen
 
       return response.data;
     } catch (e) {
@@ -23,11 +21,12 @@ export const loginThunk = createAsyncThunk<LoginResponse, LoginPayload>(
   },
 );
 
-export const signupThunk = createAsyncThunk(
+export const signupThunk = createAsyncThunk<LoginResponse, SignupPayload>(
   'auth/signup',
-  async (payload: any, {rejectWithValue}) => {
+  async (payload, {rejectWithValue}) => {
     try {
       const response = await api.signup(payload);
+      /////// navigate to code verification ///////
       return response.data;
     } catch (e) {
       return rejectWithValue(e);

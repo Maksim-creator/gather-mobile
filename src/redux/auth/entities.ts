@@ -19,3 +19,11 @@ export interface LoginResponse {
 export interface VerifyCodePayload {
   code: string;
 }
+
+export interface SignupPayload {
+  email: string;
+  password: string;
+  repeatPassword: string;
+  firstName: string;
+  lastName: string;
+}
