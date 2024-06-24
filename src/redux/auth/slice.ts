@@ -1,6 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {User} from './entities.ts';
-import {loginThunk, signupThunk, sendVerificationCode, verifyCode} from './thunk.ts';
+import {
+  loginThunk,
+  signupThunk,
+  sendVerificationCode,
+  verifyCode,
+  finishOnboarding,
+} from './thunk.ts';
 
 export interface AuthState {
   user?: User;
@@ -10,6 +16,8 @@ export interface AuthState {
   codeVerifying?: boolean;
   signUpError?: string;
   signUpLoading?: boolean;
+  finishOnboardingLoading?: boolean;
+  isLoggedIn?: boolean;
 }
 
 const initialState: AuthState = {};
@@ -17,7 +25,11 @@ const initialState: AuthState = {};
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsLoggedIn: (state, action) => {
+      state.isLoggedIn = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder.addCase(loginThunk.pending, state => {
       state.loginLoading = true;
@@ -61,6 +73,16 @@ const authSlice = createSlice({
     builder.addCase(signupThunk.rejected, (state, action) => {
       state.signUpLoading = false;
       state.signUpError = action.error.message;
+    });
+    builder.addCase(finishOnboarding.pending, state => {
+      state.finishOnboardingLoading = true;
+    });
+    builder.addCase(finishOnboarding.fulfilled, (state, action) => {
+      state.finishOnboardingLoading = false;
+      state.user = action.payload;
+    });
+    builder.addCase(finishOnboarding.rejected, state => {
+      state.finishOnboardingLoading = false;
     });
   },
 });

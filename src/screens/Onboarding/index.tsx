@@ -8,6 +8,8 @@ import ChangeLanguageModal from '../../components/ChangeLanguageModal';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ICountry, IState, ICity} from '../../redux/countries/entities.ts';
+import {useAppDispatch} from '../../redux/store.ts';
+import {finishOnboarding} from '../../redux/auth/thunk.ts';
 
 export interface LocationOnboardingData {
   country: ICountry;
@@ -24,7 +26,7 @@ export interface GeneralOnboardingData {
   language: string;
 }
 
-interface OnboardingData {
+export interface OnboardingData {
   [OnboardingDataKeys.LOCATION]?: LocationOnboardingData;
   [OnboardingDataKeys.ACTIVITIES]?: ActivitiesOnboardingData[];
   [OnboardingDataKeys.GENERAL]?: GeneralOnboardingData;
@@ -43,6 +45,7 @@ enum OnboardingDataKeys {
 
 const Onboarding = () => {
   const modalRef = useRef<BottomSheetModal>(null);
+  const dispatch = useAppDispatch();
 
   const [onboardingData, setOnboardingData] = useState<OnboardingData>({});
   const [step, setStep] = React.useState(0);
@@ -111,7 +114,12 @@ const Onboarding = () => {
                 <General
                   onSubmit={(data: GeneralOnboardingData) => {
                     handleAddOnboardingData(OnboardingDataKeys.GENERAL, data);
-                    console.log(onboardingData);
+                    dispatch(
+                      finishOnboarding({
+                        ...onboardingData,
+                        [OnboardingDataKeys.GENERAL]: data,
+                      }),
+                    );
                   }}
                   openModal={presentLanguageModal}
                 />
