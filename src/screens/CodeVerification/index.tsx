@@ -16,9 +16,9 @@ import {HighlightedText} from 'react-native-highlighted-text';
 import {lightGrey} from '../../assets/colors.ts';
 import styles from './styles.ts';
 import {Button, Input} from '../../components';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {sendVerificationCode, verifyCode} from '../../redux/auth/thunk.ts';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const t = i18n.withScope('CodeVerificationScreen');
 
@@ -37,6 +37,7 @@ const CodeVerification = () => {
   const [verificationCode, setVerificationCode] = useState<
     Record<number, string>
   >({});
+  const insets = useSafeAreaInsets();
 
   const {codeVerifying} = useAppSelector(state => state.auth);
 
@@ -102,7 +103,7 @@ const CodeVerification = () => {
               {t('title', {email: params.email})}
             </HighlightedText>
             <View style={styles.inputs}>
-              {new Array(4).fill(null).map((_, i) => (
+              {new Array(5).fill(null).map((_, i) => (
                 <Input
                   key={i}
                   inputRef={el => (refs.current[i] = el)}
@@ -135,7 +136,11 @@ const CodeVerification = () => {
               ) : null}
             </View>
           </View>
-          <View style={styles.bottomButtons}>
+          <View
+            style={[
+              styles.bottomButtons,
+              {paddingBottom: insets.bottom !== 0 ? 0 : 15},
+            ]}>
             <Button
               onPress={handleOpenMailApp}
               text={t('open_mail_button')}

@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native';
 import {RootStackParamList} from './enitites.ts';
 import screenNames from './screenNames.ts';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
@@ -18,7 +19,9 @@ export const navigate = (name: screenNames, params?: any) => {
 const Navigation = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <AuthStack />
+      <BottomSheetModalProvider>
+        <AuthStack />
+      </BottomSheetModalProvider>
     </NavigationContainer>
   );
 };

@@ -1,7 +1,7 @@
 import React, {RefObject} from 'react';
 import {Text, TextInput, TextInputProps, View} from 'react-native';
 import styles from './styles.ts';
-import {lightGrey} from '../../assets/colors.ts';
+import {darkGrey} from '../../assets/colors.ts';
 
 interface Props extends TextInputProps {
   label?: string;
@@ -23,7 +23,7 @@ const Input: React.FC<Props> = ({
       <TextInput
         {...props}
         ref={inputRef}
-        placeholderTextColor={lightGrey}
+        placeholderTextColor={darkGrey}
         style={
           error && touched
             ? [styles.input, props.style, styles.errorInput]
