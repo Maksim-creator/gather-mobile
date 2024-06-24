@@ -81,7 +81,6 @@ const SignUp = () => {
                           onChangeText={handleChange('firstName')}
                           error={errors.firstName}
                           touched={touched.firstName}
-                          autoCapitalize="characters"
                         />
                         <Input
                           style={styles.inputSmall}
@@ -91,7 +90,6 @@ const SignUp = () => {
                           error={errors.lastName}
                           touched={touched.lastName}
                           onChangeText={handleChange('lastName')}
-                          autoCapitalize="characters"
                         />
                       </View>
                       <Input

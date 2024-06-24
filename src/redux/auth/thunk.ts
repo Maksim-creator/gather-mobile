@@ -33,7 +33,8 @@ export const signupThunk = createAsyncThunk<LoginResponse, SignupPayload>(
   async (payload, {rejectWithValue}) => {
     try {
       const response = await api.signup(payload);
-      navigate(screenNames.CODE_VERIFICATION);
+      await AsyncStorage.setItem('accessToken', response.data.accessToken);
+      navigate(screenNames.CODE_VERIFICATION, {email: payload.email});
       return response.data;
     } catch (e) {
       return rejectWithValue(e);
@@ -57,6 +58,7 @@ export const verifyCode = createAsyncThunk<boolean, VerifyCodePayload>(
   async ({code}, {rejectWithValue}) => {
     try {
       const response = await api.verifyCode(code);
+      navigate(screenNames.ONBOARDING);
       return response.data.verified;
     } catch (e) {
       return rejectWithValue(e);

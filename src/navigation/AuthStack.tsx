@@ -5,6 +5,7 @@ import {RootStackParamList} from './enitites.ts';
 import screenNames from './screenNames.ts';
 import SignUp from '../screens/SignUp';
 import CodeVerification from '../screens/CodeVerification';
+import Onboarding from '../screens/Onboarding';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,6 +25,11 @@ const AuthStack = () => {
       <Stack.Screen
         name={screenNames.CODE_VERIFICATION}
         component={CodeVerification}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name={screenNames.ONBOARDING}
+        component={Onboarding}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
