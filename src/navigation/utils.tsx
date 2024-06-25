@@ -1,6 +1,7 @@
+import React from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import screenNames from './screenNames.ts';
 import ProfileTabIcon from '../components/ProfileTabIcon';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {darkGrey, linkBlue} from '../assets/colors.ts';
 
 export const getTabBarIcon = (

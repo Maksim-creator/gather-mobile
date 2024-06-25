@@ -2,13 +2,13 @@ import React, {RefObject, useCallback, useState} from 'react';
 import {FlatList, ListRenderItem, Text, TouchableOpacity} from 'react-native';
 import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
+import {useTranslation} from 'react-i18next';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {renderBottomSheetBackdrop} from '../BottomSheetBackdrop';
 import {Locale, LocalesMap} from '../../i18n';
 import Divider from '../Divider';
-import {useTranslation} from 'react-i18next';
-import Icon from 'react-native-vector-icons/Ionicons';
 import Button from '../Button';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles.ts';
 
 interface Props {
@@ -23,7 +23,7 @@ const ChangeLanguageModal: React.FC<Props> = ({modalRef}) => {
 
   const closeModal = useCallback(() => {
     modalRef.current?.dismiss();
-  }, []);
+  }, [modalRef]);
 
   const handleSubmit = async () => {
     await i18n.changeLanguage(language);

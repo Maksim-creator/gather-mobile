@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {black, lightGrey} from '../../../../assets/colors.ts';
 
 export default StyleSheet.create({
@@ -9,7 +9,6 @@ export default StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    // justifyContent: 'space-between',
     gap: 12,
     paddingVertical: 10,
     paddingBottom: 29,

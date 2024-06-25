@@ -9,16 +9,16 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import LogoScreenHeader from '../../components/LogoScreenHeader';
-import i18n from '../../i18n';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {HighlightedText} from 'react-native-highlighted-text';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import LogoScreenHeader from '../../components/LogoScreenHeader';
+import i18n from '../../i18n';
 import {lightGrey} from '../../assets/colors.ts';
 import styles from './styles.ts';
 import {Button, Input} from '../../components';
 import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {sendVerificationCode, verifyCode} from '../../redux/auth/thunk.ts';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const t = i18n.withScope('CodeVerificationScreen');
 
@@ -148,7 +148,7 @@ const CodeVerification = () => {
               style={styles.bottomButton}
             />
             <Button
-              text={'Verify'}
+              text="Verify"
               disabled={verifyDisabled || codeVerifying}
               loading={codeVerifying}
               onPress={handleVerifyCode}

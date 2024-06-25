@@ -1,11 +1,11 @@
 import React, {useMemo, useRef} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {Button} from '../../../../components';
 import CountryPickerModal, {
   Location as ILocation,
   LocationType,
 } from '../../../../components/CountryPickerModal';
-import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import {LocationOnboardingData} from '../../index.tsx';
 import styles from './styles.ts';
 import i18n from '../../../../i18n';

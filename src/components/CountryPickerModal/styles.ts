@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {lightGrey} from '../../assets/colors.ts';
+import {black, lightGrey} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   itemContainer: {
@@ -49,5 +49,14 @@ export default StyleSheet.create({
     position: 'absolute',
     right: 20,
     top: 17,
+  },
+  text: {
+    color: black,
+    fontFamily: 'Inter-Regular',
+  },
+  spinnerContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

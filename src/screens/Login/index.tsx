@@ -11,19 +11,19 @@ import {
   Animated,
   Easing,
 } from 'react-native';
+import {Formik} from 'formik';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import styles from './styles.ts';
 import i18n from '../../i18n';
-import {Formik} from 'formik';
 import {loginFormSchema} from './utils.ts';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {loginThunk} from '../../redux/auth/thunk.ts';
 import {LoginPayload} from '../../redux/auth/entities.ts';
 import {Button, Divider, Input} from '../../components';
-import {useNavigation} from '@react-navigation/native';
 import screenNames from '../../navigation/screenNames.ts';
 import {RootStackParamList} from '../../navigation/enitites.ts';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const t = i18n.withScope('LoginScreen');
 
@@ -58,7 +58,7 @@ const LoginScreen = () => {
     <SafeAreaView style={styles.safeArea}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <KeyboardAvoidingView
-          style={{flex: 1}}
+          style={styles.content}
           keyboardVerticalOffset={-70}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <View style={styles.container}>

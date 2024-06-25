@@ -10,10 +10,10 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import {Formik} from 'formik';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Button, Input} from '../../components';
 import {singUpFormSchema} from './utils.ts';
 import i18n from '../../i18n';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useAppDispatch, useAppSelector} from '../../redux/store.ts';
 import {signupThunk} from '../../redux/auth/thunk.ts';
 import {SignupPayload} from '../../redux/auth/entities.ts';

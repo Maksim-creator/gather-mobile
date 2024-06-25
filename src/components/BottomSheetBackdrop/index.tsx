@@ -4,6 +4,7 @@ import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
 } from '@gorhom/bottom-sheet';
+import {backdrop} from '../../assets/colors.ts';
 
 export const renderBottomSheetBackdrop = (props: BottomSheetBackdropProps) => (
   <BottomSheetBackdrop
@@ -12,9 +13,10 @@ export const renderBottomSheetBackdrop = (props: BottomSheetBackdropProps) => (
     enableTouchThrough={false}
     appearsOnIndex={0}
     disappearsOnIndex={-1}
-    style={[
-      {backgroundColor: 'rgba(0,0,0,0.5)'},
-      StyleSheet.absoluteFillObject,
-    ]}
+    style={[styles.backdrop, StyleSheet.absoluteFillObject]}
   />
 );
+
+const styles = StyleSheet.create({
+  backdrop: {backgroundColor: backdrop},
+});

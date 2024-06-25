@@ -6,7 +6,6 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import {
   View,
   Text,
@@ -15,11 +14,13 @@ import {
   TextInput,
   LayoutAnimation,
 } from 'react-native';
+import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
 import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LottieView from 'lottie-react-native';
-import {black, darkGrey} from '../../assets/colors';
+import {FlatList} from 'react-native-gesture-handler';
+import {darkGrey} from '../../assets/colors';
 import {Divider} from '../index';
 import {renderBottomSheetBackdrop} from '../BottomSheetBackdrop';
 import i18n from '../../i18n';
@@ -31,7 +32,6 @@ import {
   getStatesByCountry,
 } from '../../redux/countries/thunk.ts';
 import ActivityIndicator from '../ActivityIndicator';
-import {FlatList} from 'react-native-gesture-handler';
 import {IState, ICity, ICountry} from '../../redux/countries/entities.ts';
 
 export type Location = ICountry | IState | ICity;
@@ -66,22 +66,29 @@ const CountryPickerModal: React.FC<Props> = ({modalRef, onSelect}) => {
   const [type, setType] = useState<LocationType>(LocationType.COUNTRY);
   const flatListRef = useRef<FlatList>(null);
 
-  const handleSelect = (location: Location) => {
-    setSearch('');
-    flatListRef.current?.scrollToIndex({index: 0, animated: true});
-    onSelect(location, type);
-    if (type === LocationType.COUNTRY) {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      setSelectedCountry(location as ICountry);
-      setType(LocationType.STATE);
-    } else if (type === LocationType.STATE) {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      setSelectedState(location as IState);
-      setType(LocationType.CITY);
-    } else {
-      closeModal();
-    }
-  };
+  const closeModal = useCallback(() => {
+    modalRef.current?.dismiss();
+  }, [modalRef]);
+
+  const handleSelect = useCallback(
+    (location: Location) => {
+      setSearch('');
+      flatListRef.current?.scrollToIndex({index: 0, animated: true});
+      onSelect(location, type);
+      if (type === LocationType.COUNTRY) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setSelectedCountry(location as ICountry);
+        setType(LocationType.STATE);
+      } else if (type === LocationType.STATE) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setSelectedState(location as IState);
+        setType(LocationType.CITY);
+      } else {
+        closeModal();
+      }
+    },
+    [type, onSelect, closeModal],
+  );
 
   const renderItem: ListRenderItem<Location> = useCallback(
     ({item}) => {
@@ -93,27 +100,23 @@ const CountryPickerModal: React.FC<Props> = ({modalRef, onSelect}) => {
           onPress={handleItemSelect}>
           {'emoji' in item ? (
             <View style={styles.itemContent}>
-              <Text style={{color: black}}>{item.emoji}</Text>
-              <Text style={{color: black, fontFamily: 'Inter-Regular'}}>
-                {item.name}
-              </Text>
+              <Text style={styles.text}>{item.emoji}</Text>
+              <Text style={styles.text}>{item.name}</Text>
             </View>
           ) : (
-            <Text style={{color: black, fontFamily: 'Inter-Regular'}}>
-              {item.name}
-            </Text>
+            <Text style={styles.text}>{item.name}</Text>
           )}
         </TouchableOpacity>
       );
     },
-    [type],
+    [handleSelect],
   );
 
   const renderItemSeparator = useCallback(() => <Divider />, []);
 
   const renderFooter = useCallback(
     () => <View style={{height: insets.bottom}} />,
-    [],
+    [insets.bottom],
   );
 
   const renderEmptyComponent = useCallback(
@@ -145,11 +148,7 @@ const CountryPickerModal: React.FC<Props> = ({modalRef, onSelect}) => {
         }),
       );
     }
-  }, [type, selectedCountry, selectedState]);
-
-  const closeModal = useCallback(() => {
-    modalRef.current?.dismiss();
-  }, []);
+  }, [type, selectedCountry, selectedState, dispatch]);
 
   const handleIndexChange = (index: number) => {
     if (index === -1) {
@@ -180,7 +179,7 @@ const CountryPickerModal: React.FC<Props> = ({modalRef, onSelect}) => {
           city.name.toLowerCase().includes(search.toLowerCase()),
         );
     }
-  }, [search, states, cities, countries]);
+  }, [search, states, cities, countries, type]);
 
   // @ts-ignore
   return (
@@ -216,13 +215,8 @@ const CountryPickerModal: React.FC<Props> = ({modalRef, onSelect}) => {
           )}
         </View>
         {statesLoading || countriesLoading || citiesLoading ? (
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <ActivityIndicator size={'md'} />
+          <View style={styles.spinnerContainer}>
+            <ActivityIndicator size="md" />
           </View>
         ) : (
           <FlatList

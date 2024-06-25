@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {black, white} from '../../assets/colors.ts';
 import {useTranslation} from 'react-i18next';
+import {black, white} from '../../assets/colors.ts';
 import styles from './styles.ts';
 
 interface Props {

@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {SafeAreaView, Text, useWindowDimensions, View} from 'react-native';
-import {linkBlue} from '../../assets/colors.ts';
-import {useAppSelector} from '../../redux/store.ts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   NavigationState,
@@ -11,10 +9,12 @@ import {
   TabBar,
   TabView,
 } from 'react-native-tab-view';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {linkBlue} from '../../assets/colors.ts';
+import {useAppSelector} from '../../redux/store.ts';
 import Header from './components/Header';
 import styles from './styles.ts';
 import {routes} from './utils.ts';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const renderScene = SceneMap({
   active: () => <></>,
@@ -43,14 +43,7 @@ const Profile = () => {
               size={18}
               color={focused ? linkBlue : '#adaaaa'}
             />
-            <Text
-              style={{
-                color: focused ? linkBlue : '#adaaaa',
-                fontFamily: 'Inter-Medium',
-                fontSize: 13,
-              }}>
-              {route.title}
-            </Text>
+            <Text style={styles.tabTitle(focused)}>{route.title}</Text>
           </View>
         )}
         indicatorStyle={styles.indicator}

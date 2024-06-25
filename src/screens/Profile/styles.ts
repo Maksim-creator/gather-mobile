@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {linkBlue, white} from '../../assets/colors.ts';
 
-export default StyleSheet.create({
+export default StyleSheet.create<any>({
   container: {
     backgroundColor: white,
     flex: 1,
@@ -31,4 +31,9 @@ export default StyleSheet.create({
   sceneContainer: {
     borderBottomWidth: 0,
   },
+  tabTitle: (focused: boolean) => ({
+    color: focused ? linkBlue : '#adaaaa',
+    fontFamily: 'Inter-Medium',
+    fontSize: 13,
+  }),
 });
