@@ -179,5 +179,12 @@
     "Male": "Male",
     "Female": "Female",
     "Rather not say": "Rather not say"
+  },
+  "ProfileScreen": {
+    "activeTabText": "Active",
+    "finishedTabText": "Finished",
+    "savedTabText": "Saved",
+    "he_gender_text": "he/him/his",
+    "she_gender_text": "she/her/hers"
   }
 }

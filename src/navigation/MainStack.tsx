@@ -1,21 +1,46 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {RootStackParamList} from './enitites.ts';
 import screenNames from './screenNames.ts';
 import Profile from '../screens/Profile';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Platform} from 'react-native';
+import {getTabBarIcon} from './utils.tsx';
+import Search from '../screens/Search';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator();
 
 const MainStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name={screenNames.PROFILE}
-        component={Profile}
-        options={{headerShown: false}}
-      />
-    </Stack.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({color, size, focused}) => {
+          return getTabBarIcon(size, color, focused, route.name);
+        },
+        ...tabBarScreenOptions,
+      })}>
+      <Tab.Screen name={screenNames.SEARCH} component={Search} />
+      <Tab.Screen name={screenNames.PROFILE} component={Profile} />
+    </Tab.Navigator>
   );
 };
 
 export default MainStack;
+
+const tabBarScreenOptions = {
+  headerShown: false,
+  tabBarHideOnKeyboard: false,
+  tabBarShowLabel: false,
+  tabBarStyle: {
+    position: 'absolute',
+    height: 70,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOpacity: 0.3,
+    elevation: 5,
+  },
+} as const;

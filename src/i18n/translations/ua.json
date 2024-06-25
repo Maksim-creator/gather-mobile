@@ -179,5 +179,12 @@
     "Male": "Чоловік",
     "Female": "Жінка",
     "Rather not say": "Вважаю за краще не говорити"
+  },
+  "ProfileScreen": {
+    "activeTabText": "Активні",
+    "finishedTabText": "Завершені",
+    "savedTabText": "Збережені",
+    "he_gender_text": "він/йому/його",
+    "she_gender_text": "вона/їй/її"
   }
 }
