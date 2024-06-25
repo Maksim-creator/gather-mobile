@@ -92,4 +92,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: darkGrey,
   },
+  content: {
+    flex: 1,
+  },
 });

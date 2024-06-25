@@ -7,17 +7,17 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import {
+  NavigationState,
+  SceneRendererProps,
+  TabView,
+} from 'react-native-tab-view';
 import {ActivitiesOnboardingData} from '../../index.tsx';
 import Tag from '../../../../components/Tag';
 import {ActivityIndicator, Button, Divider} from '../../../../components';
 import {black, linkBlue} from '../../../../assets/colors.ts';
 import {useAppDispatch, useAppSelector} from '../../../../redux/store.ts';
 import {getAllActivities} from '../../../../redux/activities/thunk.ts';
-import {
-  NavigationState,
-  SceneRendererProps,
-  TabView,
-} from 'react-native-tab-view';
 import {Activity} from '../../../../redux/activities/entities.ts';
 import {styles} from './styles.ts';
 import i18n from '../../../../i18n';
@@ -161,7 +161,7 @@ const Activities = ({
     if (!activities) {
       dispatch(getAllActivities());
     }
-  }, [activities]);
+  }, [activities, dispatch]);
 
   return (
     <View style={styles.container}>
@@ -185,7 +185,7 @@ const Activities = ({
                   <Tag
                     text={t(activity.name)}
                     key={activity.id}
-                    iconName={'close-outline'}
+                    iconName="close-outline"
                     onPress={handleRemoveActivity(activity.id)}
                   />
                 ))}

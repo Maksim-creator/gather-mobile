@@ -5,3 +5,4 @@ export const black = '#000000';
 export const white = '#ffffff';
 export const linkBlue = '#35AAFF';
 export const disabled = '#838383';
+export const backdrop = 'rgba(0,0,0,0.5)';

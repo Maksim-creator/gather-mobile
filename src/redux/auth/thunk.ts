@@ -1,4 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../../api/auth';
 import {
   LoginPayload,
@@ -6,7 +7,6 @@ import {
   SignupPayload,
   VerifyCodePayload,
 } from './entities.ts';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {setAuthorizationToken} from '../../api';
 import {navigate} from '../../navigation';
 import screenNames from '../../navigation/screenNames.ts';

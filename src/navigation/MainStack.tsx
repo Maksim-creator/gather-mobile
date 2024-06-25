@@ -1,8 +1,7 @@
 import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import screenNames from './screenNames.ts';
 import Profile from '../screens/Profile';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Platform} from 'react-native';
 import {getTabBarIcon} from './utils.tsx';
 import Search from '../screens/Search';
 

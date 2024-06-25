@@ -1,5 +1,5 @@
-import screenNames from './screenNames.ts';
 import {RouteProp} from '@react-navigation/native';
+import screenNames from './screenNames.ts';
 
 export type RootStackParamList = {
   [screenNames.LOGIN]: undefined;

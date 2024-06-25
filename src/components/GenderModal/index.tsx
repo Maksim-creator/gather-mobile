@@ -1,15 +1,15 @@
 import React, {RefObject, useCallback, useState} from 'react';
-import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
-import {renderBottomSheetBackdrop} from '../BottomSheetBackdrop';
-import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
-import {Genders} from '../../utils/constants.ts';
 import {FlatList, ListRenderItem, Text, TouchableOpacity} from 'react-native';
+import {BottomSheetModal, BottomSheetView} from '@gorhom/bottom-sheet';
+import {BottomSheetModalMethods} from '@gorhom/bottom-sheet/lib/typescript/types';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useTranslation} from 'react-i18next';
+import {renderBottomSheetBackdrop} from '../BottomSheetBackdrop';
+import {Genders} from '../../utils/constants.ts';
 import Divider from '../Divider';
 import Button from '../Button';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles.ts';
-import {useTranslation} from 'react-i18next';
 
 interface Props {
   modalRef: RefObject<BottomSheetModalMethods>;
@@ -25,7 +25,7 @@ const GenderModal: React.FC<Props> = ({modalRef, onGenderSubmit}) => {
 
   const closeModal = useCallback(() => {
     modalRef.current?.dismiss();
-  }, []);
+  }, [modalRef]);
 
   const renderItem: ListRenderItem<string> = useCallback(
     ({item}) => {
@@ -37,12 +37,12 @@ const GenderModal: React.FC<Props> = ({modalRef, onGenderSubmit}) => {
             {i18n.t(`OnboardingScreen.${item}`)}
           </Text>
           {item === selectedGender ? (
-            <Icon name={'checkmark-outline'} size={20} />
+            <Icon name="checkmark-outline" size={20} />
           ) : null}
         </TouchableOpacity>
       );
     },
-    [selectedGender],
+    [selectedGender, i18n],
   );
 
   const handleGenderSelect = () => {

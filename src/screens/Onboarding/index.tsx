@@ -1,12 +1,12 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {LayoutAnimation, SafeAreaView, View} from 'react-native';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {LogoScreenHeader} from '../../components';
 import ByStepOverview from '../../components/ByStepOverview';
 import {Activities, General, Location} from './components';
 import styles from './styles.ts';
 import ChangeLanguageModal from '../../components/ChangeLanguageModal';
-import {BottomSheetModal} from '@gorhom/bottom-sheet';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {ICountry, IState, ICity} from '../../redux/countries/entities.ts';
 import {useAppDispatch} from '../../redux/store.ts';
 import {finishOnboarding} from '../../redux/auth/thunk.ts';

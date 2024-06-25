@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {black, darkGrey, lightGrey, linkBlue} from '../../assets/colors.ts';
+import {black, darkGrey, linkBlue} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   safeArea: {

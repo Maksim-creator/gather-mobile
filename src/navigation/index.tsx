@@ -1,14 +1,14 @@
 import React from 'react';
-import AuthStack from './AuthStack.tsx';
 import {
   createNavigationContainerRef,
   NavigationContainer,
 } from '@react-navigation/native';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AuthStack from './AuthStack.tsx';
 import {RootStackParamList} from './enitites.ts';
 import screenNames from './screenNames.ts';
-import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import MainStack from './MainStack.tsx';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useAppSelector} from '../redux/store.ts';
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();

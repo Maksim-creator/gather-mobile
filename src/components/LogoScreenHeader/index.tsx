@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './styles.ts';
 import {Image, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import styles from './styles.ts';
 
 const LogoScreenHeader = () => {
   const insets = useSafeAreaInsets();

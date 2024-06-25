@@ -1,6 +1,6 @@
 import React from 'react';
-import {darkGrey, linkBlue} from '../../assets/colors.ts';
 import {Text, View} from 'react-native';
+import {darkGrey, linkBlue} from '../../assets/colors.ts';
 import {useAppSelector} from '../../redux/store.ts';
 import styles from './styles.ts';
 

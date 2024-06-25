@@ -1,15 +1,14 @@
 import React, {useCallback, useRef} from 'react';
-import {GeneralOnboardingData} from '../../index.tsx';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {Button} from '../../../../components';
 import {BottomSheetModal} from '@gorhom/bottom-sheet';
+import Icon from 'react-native-vector-icons/Ionicons';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import {GeneralOnboardingData} from '../../index.tsx';
+import {Button} from '../../../../components';
 import i18n, {LocalesMap} from '../../../../i18n';
-import {useTranslation} from 'react-i18next';
 import GenderModal from '../../../../components/GenderModal';
 import styles from './styles.ts';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {black, darkGrey} from '../../../../assets/colors.ts';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import {useAppSelector} from '../../../../redux/store.ts';
 
 const t = i18n.withScope('OnboardingScreen');
@@ -21,7 +20,6 @@ const General = ({
   onSubmit: (data: GeneralOnboardingData) => void;
   openModal: () => void;
 }) => {
-  const {i18n} = useTranslation();
   const genderModalRef = useRef<BottomSheetModal>(null);
   const {finishOnboardingLoading} = useAppSelector(state => state.auth);
 
