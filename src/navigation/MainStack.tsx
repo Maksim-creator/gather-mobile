@@ -10,6 +10,7 @@ const Tab = createBottomTabNavigator();
 const MainStack = () => {
   return (
     <Tab.Navigator
+      initialRouteName={screenNames.PROFILE}
       screenOptions={({route}) => ({
         tabBarIcon: ({color, size, focused}) => {
           return getTabBarIcon(size, color, focused, route.name);
@@ -30,7 +31,7 @@ const tabBarScreenOptions = {
   tabBarShowLabel: false,
   tabBarStyle: {
     position: 'absolute',
-    height: 70,
+    height: 80,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     shadowOffset: {

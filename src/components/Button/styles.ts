@@ -1,15 +1,22 @@
 import {StyleSheet} from 'react-native';
-import {black, disabled, lightGrey, white} from '../../assets/colors.ts';
+import {
+  accentBlue,
+  black,
+  disabled,
+  lightGrey,
+  white,
+} from '../../assets/colors.ts';
 
 export default StyleSheet.create({
   button_kind_primary: {
-    backgroundColor: black,
-    color: '#fff',
+    borderRadius: 8,
+    width: '100%',
+    height: 44,
   },
   button_kind_outline: {
-    borderColor: black,
+    borderColor: accentBlue,
     borderWidth: 1,
-    color: '#000',
+    color: black,
   },
   button_kind_primary_disabled: {
     backgroundColor: disabled,
@@ -23,6 +30,15 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: 44,
+    borderRadius: 8,
+    flexDirection: 'row',
+    gap: 10,
+  },
+  touchable: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
     borderRadius: 8,
     flexDirection: 'row',
     gap: 10,

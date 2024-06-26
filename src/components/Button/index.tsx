@@ -7,8 +7,10 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles.ts';
 import ActivityIndicator from '../ActivityIndicator';
+import {accentBlue, linkBlue} from '../../assets/colors.ts';
 
 interface Props {
   kind?: 'primary' | 'outline';
@@ -57,18 +59,32 @@ const Button: React.FC<Props> = ({
     [],
   );
 
+  const buttonContent = (
+    <TouchableOpacity
+      style={styles.touchable}
+      onPress={onPress}
+      disabled={disabled}
+      onLayout={onButtonLayout}>
+      <Text style={textStyle} onLayout={onTextLayout}>
+        {text}
+      </Text>
+      {loading && <ActivityIndicator right={buttonWidth - textWidth - 30} />}
+    </TouchableOpacity>
+  );
+
   return (
     <View style={style}>
-      <TouchableOpacity
-        style={containerStyle}
-        onPress={onPress}
-        onLayout={onButtonLayout}
-        disabled={disabled}>
-        <Text style={textStyle} onLayout={onTextLayout}>
-          {text}
-        </Text>
-        {loading && <ActivityIndicator right={buttonWidth - textWidth - 30} />}
-      </TouchableOpacity>
+      {kind === 'primary' && !disabled ? (
+        <LinearGradient
+          colors={[accentBlue, linkBlue]}
+          start={{x: 0, y: 0.25}}
+          end={{x: 1, y: 1.5}}
+          style={containerStyle}>
+          {buttonContent}
+        </LinearGradient>
+      ) : (
+        <View style={containerStyle}>{buttonContent}</View>
+      )}
     </View>
   );
 };
